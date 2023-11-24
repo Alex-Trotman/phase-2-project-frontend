@@ -1,22 +1,21 @@
 import { NavLink } from "react-router-dom";
+import "./NavBar.css";
+import SearchBar from "./SearchBar";
+import CartIcon from "./CartIcon";
 
 /* define the NavBar component */
 function NavBar() {
   return (
-    <nav>
-      <NavLink
-        to="/"
-        /* add styling to Navlink */
-        className="nav-link"
-      >
-        <img src="./favicon.ico"></img>
+    <nav className="navbar-wrapper">
+      <NavLink to="/" className="nav-link">
+        <img className="header-logo" src="./Amazon_logo.svg.webp"></img>
       </NavLink>
-      <div>Search Bar</div>
+      <SearchBar />
       <NavLink to="/orders" className="nav-link">
         Returns & Orders
       </NavLink>
       <NavLink to="/cart" className="nav-link">
-        Cart
+        <CartIcon />
       </NavLink>
     </nav>
   );
