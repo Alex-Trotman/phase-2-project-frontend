@@ -9,8 +9,9 @@ function NavBar() {
         /* add styling to Navlink */
         className="nav-link"
       >
-        Home
+        <img src="./favicon.ico"></img>
       </NavLink>
+      <div>Search Bar</div>
       <NavLink to="/orders" className="nav-link">
         Returns & Orders
       </NavLink>
