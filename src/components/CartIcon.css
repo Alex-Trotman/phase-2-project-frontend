@@ -1,0 +1,11 @@
+.cart-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.basket-count {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
