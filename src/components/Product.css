@@ -1,0 +1,5 @@
+.product {
+  border: 2px dotted grey;
+  width: 500px;
+  display: grid;
+}
