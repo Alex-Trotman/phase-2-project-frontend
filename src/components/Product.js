@@ -43,16 +43,17 @@ function Product({
     <div className="product">
       <div className="product-info">
         <p>{name}</p>
-        <img src={image}></img>
         <p className="product-price">
           <small>$</small>
           <strong>{price}</strong>
         </p>
         <div className="product-rating">Rating: {rating}</div>
       </div>
+      <img src={image}></img>
       <button onClick={() => handleAddToCart(id)}>
         {isAddedToCart ? "Remove from cart" : "Add to cart"}
       </button>
+    
     </div>
   );
 }
