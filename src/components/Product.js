@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Product.css";
 
 function Product({
@@ -11,7 +11,15 @@ function Product({
   image,
   rating,
 }) {
-  //   const [inCart, setInCart] = useState(false);
+    const [inCart, setInCart] = useState();
+
+    useEffect(() => {
+      if (isAddedToCart === true){
+        setInCart(true)
+      } else if (isAddedToCart === false){
+        setInCart(false)
+      }
+    }, [])
 
   function handleAddToCart(productId) {
     console.log(productId);
@@ -35,7 +43,11 @@ function Product({
         });
       })
       .then((response) => response.json())
-      .then((data) => console.log("Toggle successful:", data.isAddedToCart))
+      .then((data) => {
+        console.log("Toggle successful:", data.isAddedToCart)
+        console.log("inCart:", inCart)
+        setInCart(!isAddedToCart)
+      })
       .catch((error) => console.error("Error during toggle:", error));
   }
 
