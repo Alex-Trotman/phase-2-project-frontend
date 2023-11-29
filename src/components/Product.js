@@ -11,15 +11,7 @@ function Product({
   image,
   rating,
 }) {
-    const [inCart, setInCart] = useState();
-
-    useEffect(() => {
-      if (isAddedToCart === true){
-        setInCart(true)
-      } else if (isAddedToCart === false){
-        setInCart(false)
-      }
-    }, [])
+  const [buttonValue, setButtonValue] = useState("Add to cart");
 
   function handleAddToCart(productId) {
     console.log(productId);
@@ -44,9 +36,12 @@ function Product({
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Toggle successful:", data.isAddedToCart)
-        console.log("inCart:", inCart)
-        setInCart(!isAddedToCart)
+        console.log("Toggle successful:", data.isAddedToCart);
+        setButtonValue(
+          buttonValue === "Remove from cart"
+            ? "Add to cart"
+            : "Remove from cart"
+        );
       })
       .catch((error) => console.error("Error during toggle:", error));
   }
@@ -62,10 +57,7 @@ function Product({
         <div className="product-rating">Rating: {rating}</div>
       </div>
       <img src={image}></img>
-      <button onClick={() => handleAddToCart(id)}>
-        {isAddedToCart ? "Remove from cart" : "Add to cart"}
-      </button>
-    
+      <button onClick={() => handleAddToCart(id)}>{buttonValue}</button>
     </div>
   );
 }
