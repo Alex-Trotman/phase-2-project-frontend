@@ -13,6 +13,21 @@ function Product({
 }) {
   const [buttonValue, setButtonValue] = useState("Add to cart");
 
+  useEffect(() => {
+    fetch(`http://localhost:4000/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("GET:", data.isAddedToCart);
+        let cartValue = data.isAddedToCart;
+
+        if (cartValue === true) {
+          setButtonValue("Remove from cart");
+        } else if (cartValue === false) {
+          setButtonValue("Add to cart");
+        }
+      });
+  });
+
   function handleAddToCart(productId) {
     console.log(productId);
     const url = `http://localhost:4000/products/${productId}`;
