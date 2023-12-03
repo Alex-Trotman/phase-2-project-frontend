@@ -1,4 +1,5 @@
 // routes.js
+import App from "./App";
 import Home from "./pages/Home";
 import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
