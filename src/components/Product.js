@@ -10,6 +10,7 @@ function Product({
   prime,
   image,
   rating,
+  updateCart,
 }) {
   const [buttonValue, setButtonValue] = useState("Add to cart");
 
@@ -17,7 +18,6 @@ function Product({
     fetch(`http://localhost:4000/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("GET:", data.isAddedToCart);
         let cartValue = data.isAddedToCart;
 
         if (cartValue === true) {
@@ -57,6 +57,8 @@ function Product({
             ? "Add to cart"
             : "Remove from cart"
         );
+
+        updateCart(buttonValue);
       })
       .catch((error) => console.error("Error during toggle:", error));
   }

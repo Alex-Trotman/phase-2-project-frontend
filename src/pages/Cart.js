@@ -24,11 +24,21 @@ function Cart() {
       });
   }, []);
 
+  function itemsInCartToString() {
+    if (itemsInCart === 1) {
+      return `You have ${itemsInCart} item in cart`;
+    } else if (itemsInCart > 1) {
+      return `You have ${itemsInCart} items in cart`;
+    } else if (itemsInCart === 0) {
+      return "Cart is empty";
+    }
+  }
+
   return (
     <div>
       <NavBar />
       <div>
-        <h1>You have {itemsInCart} items in your cart</h1>
+        <h1>{itemsInCartToString()}</h1>
       </div>
     </div>
   );

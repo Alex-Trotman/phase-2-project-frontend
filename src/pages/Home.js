@@ -4,6 +4,7 @@ import Product from "../components/Product";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const [itemsInCart, setItemsInCart] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:4000/products")
@@ -14,9 +15,18 @@ function Home() {
       });
   }, []);
 
+  function updateCart(buttonValue) {
+    console.log(buttonValue);
+    if (buttonValue === "Add to cart") {
+      setItemsInCart(itemsInCart + 1);
+    } else if (buttonValue === "Remove from cart") {
+      setItemsInCart(itemsInCart - 1);
+    }
+  }
+
   return (
     <div>
-      <NavBar />
+      <NavBar itemsInCart={itemsInCart} />
       <div className="products-gallery">
         {products.map((product) => {
           return (
@@ -30,6 +40,7 @@ function Home() {
               rating={product.rating}
               id={product.id}
               isAddedToCart={product.isAddedToCart}
+              updateCart={updateCart}
             />
           );
         })}

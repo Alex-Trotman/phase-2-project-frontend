@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 
 /* define the NavBar component */
-function NavBar() {
+function NavBar({ itemsInCart }) {
   return (
     <nav className="navbar-wrapper">
       <NavLink to="/" className="nav-link">
@@ -15,7 +15,7 @@ function NavBar() {
         Returns & Orders
       </NavLink>
       <NavLink to="/cart" className="nav-link">
-        <CartIcon />
+        <CartIcon itemsInCart={itemsInCart} />
       </NavLink>
     </nav>
   );
