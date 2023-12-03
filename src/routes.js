@@ -23,7 +23,7 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "/review",
+    path: "/reviews",
     element: <Review />,
     errorElement: <ErrorPage />,
   },

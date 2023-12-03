@@ -58,7 +58,7 @@ function Product({
             : "Remove from cart"
         );
 
-        updateCart(buttonValue);
+        // updateCart(buttonValue);
       })
       .catch((error) => console.error("Error during toggle:", error));
   }
