@@ -24,11 +24,12 @@ function CartIcon({ itemsInCart }) {
   //       console.error("Error fetching data:", error);
   //     });
   // }, []);
-
+  
+// <span className="basket-count">{itemsInCart}</span>
   return (
     <div className="cart-wrapper">
       <ShoppingCartIcon />
-      <span className="basket-count">{itemsInCart}</span>
+      
     </div>
   );
 }

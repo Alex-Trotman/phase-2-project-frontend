@@ -31,6 +31,7 @@ function Home() {
       <div className="products-gallery">
         {products.map((product) => {
           return (
+            
             <Product
               key={product.name}
               name={product.name}
