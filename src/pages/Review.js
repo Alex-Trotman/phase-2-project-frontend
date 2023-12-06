@@ -26,7 +26,6 @@ function Review() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Add any additional headers if needed
         },
         body: JSON.stringify(formData),
       })

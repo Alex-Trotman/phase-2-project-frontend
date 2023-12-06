@@ -1,6 +1,7 @@
 import NavBar from "../components/NavBar";
 import { useEffect, useState } from "react";
 import Product from "../components/Product";
+import "./Home.css"
 
 function Home() {
   const [products, setProducts] = useState([]);
