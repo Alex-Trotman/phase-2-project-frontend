@@ -1,11 +1,8 @@
-function CartItem({ name, price, image, rating, id }){
+function CartItem({ name, price, image, rating, id }) {
+  function handleRemoveFromCart() {}
 
-    function handleRemoveFromCart(){
-        
-    }
-
-    return (
-        <div className="product">
+  return (
+    <div className="product">
       <div className="product-info">
         <p>{name}</p>
         <p className="product-price">
@@ -17,7 +14,7 @@ function CartItem({ name, price, image, rating, id }){
       <img src={image}></img>
       <button onClick={null}>Remove from cart</button>
     </div>
-    )
+  );
 }
 
 export default CartItem;
