@@ -11,9 +11,13 @@ function NavBar({ itemsInCart }) {
         <img className="header-logo" src="./Amazon_logo.svg.webp"></img>
       </NavLink>
       <SearchBar />
+      <NavLink to="/reviews" className="nav-link">
+        Write a review
+      </NavLink>
       <NavLink to="/orders" className="nav-link">
         Returns & Orders
       </NavLink>
+
       <NavLink to="/cart" className="nav-link">
         <CartIcon itemsInCart={itemsInCart} />
       </NavLink>

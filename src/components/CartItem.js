@@ -1,6 +1,4 @@
-function CartItem({ name, price, image, rating, id }) {
-  function handleRemoveFromCart() {}
-
+function CartItem({ name, price, image, rating, id, handleRemoveFromCart }) {
   return (
     <div className="product">
       <div className="product-info">
@@ -12,7 +10,7 @@ function CartItem({ name, price, image, rating, id }) {
         <div className="product-rating">Rating: {rating}</div>
       </div>
       <img src={image}></img>
-      <button onClick={null}>Remove from cart</button>
+      <button onClick={() => handleRemoveFromCart(id)}>Remove from cart</button>
     </div>
   );
 }

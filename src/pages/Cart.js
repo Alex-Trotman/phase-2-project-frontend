@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 function Cart() {
   const [itemsInCart, setItemsInCart] = useState(0);
   const [products, setProducts] = useState([]);
-  const [total, setTotal] = useState(0);
 
-  useEffect(() => {
+  function getInCartItems() {
     fetch("http://localhost:4000/products")
       .then((res) => res.json())
       .then((data) => {
@@ -16,6 +15,10 @@ function Cart() {
         const cartItems = data.filter((item) => item.isAddedToCart === true);
         setProducts(cartItems);
       });
+  }
+
+  useEffect(() => {
+    getInCartItems();
   }, []);
 
   const updatedTotal = products.reduce(
@@ -23,7 +26,7 @@ function Cart() {
     0
   );
 
-  useEffect(() => {
+  function getCountOnInCartItems() {
     fetch("http://localhost:4000/products")
       .then((res) => {
         if (!res.ok) {
@@ -41,6 +44,10 @@ function Cart() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+  }
+
+  useEffect(() => {
+    getCountOnInCartItems();
   }, []);
 
   function itemsInCartToString() {
@@ -54,7 +61,75 @@ function Cart() {
   }
 
   function handleOrder() {
-    console.log("ORDERED!!!!");
+    console.log("INSIDE handleOrder:", products);
+    if (products.length > 0) {
+      const newOrder = {
+        id: "",
+        products: [],
+        total: updatedTotal,
+      };
+
+      products.forEach((product) => {
+        newOrder.products.push({
+          name: product.name,
+          productId: product.id,
+          quantity: "example",
+          price: product.price,
+        });
+
+        products.forEach((product) => {
+          const url = `http://localhost:4000/products/${product.id}`;
+
+          fetch(url)
+            .then((response) => response.json())
+            .then((product) => {
+              return fetch(url, {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  purchased: true,
+                  isAddedToCart: false,
+                }),
+              });
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              getInCartItems();
+              getCountOnInCartItems();
+            })
+            .catch((error) => console.error("Error during toggle:", error));
+        });
+      });
+
+      console.log("newOrder:", newOrder);
+    } else alert("Cart is empty, please add items to place an order.");
+  }
+
+  function handleRemoveFromCart(id) {
+    const url = `http://localhost:4000/products/${id}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((product) => {
+        return fetch(url, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            isAddedToCart: false,
+          }),
+        });
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Cart.js - Line 83:", data.isAddedToCart);
+        getInCartItems();
+        getCountOnInCartItems();
+      })
+      .catch((error) => console.error("Error during toggle:", error));
   }
 
   return (
@@ -75,6 +150,7 @@ function Cart() {
                 rating={product.rating}
                 id={product.id}
                 isAddedToCart={product.isAddedToCart}
+                handleRemoveFromCart={handleRemoveFromCart}
               />
             );
           })}

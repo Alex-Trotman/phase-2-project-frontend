@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 function Review() {
   const [formData, setFormData] = useState({
     id: "",
+    user: "user1",
     product: "",
     rating: "",
     review: "",
@@ -38,6 +39,13 @@ function Review() {
         .then((data) => {
           // Handle the response data
           console.log("Response data:", data);
+          setFormData({
+            id: "",
+            user: "user1",
+            product: "",
+            rating: "",
+            review: "",
+          });
         })
         .catch((error) => {
           // Log the entire response object
@@ -60,6 +68,8 @@ function Review() {
           <option>Smartphone</option>
           <option>Laptop</option>
           <option>Headphones</option>
+          <option>Sovol SV01 Pro 3D Printer</option>
+          <option>eSUN PLA+ Filament 1.75mm</option>
         </select>
         <br />
         <label>Rating:</label>
