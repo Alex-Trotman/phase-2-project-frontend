@@ -1,6 +1,7 @@
-import { SettingsRemoteSharp } from "@mui/icons-material";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import OrderedItem from "../components/OrderedItem";
+import "./Orders.css";
 import React, { useState, useEffect } from "react";
 function Orders() {
   const [items, setItems] = useState([]);
@@ -27,25 +28,24 @@ function Orders() {
 
   console.log("Purchased products:", purchasedProducts);
   return (
-    <div>
+    <div className="orders-container">
       <NavBar />
-      <h1>My Orders</h1>
-      <ul>
-        {purchasedProducts.map((product) => {
-          return (
-            <OrderedItem
-              key={product.name}
-              name={product.name}
-              image={product.image}
-              price={product.price}
-              description={product.description}
-              prime={product.prime}
-              rating={product.rating}
-              id={product.id}
-            />
-          );
-        })}
+      <h1 className="orders-header">My Orders</h1>
+      <ul className="ordered-item-list">
+        {purchasedProducts.map((product) => (
+          <OrderedItem
+            key={product.name}
+            name={product.name}
+            image={product.image}
+            price={product.price}
+            description={product.description}
+            prime={product.prime}
+            rating={product.rating}
+            id={product.id}
+          />
+        ))}
       </ul>
+      <Footer />
     </div>
   );
 

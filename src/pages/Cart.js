@@ -1,5 +1,7 @@
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import CartItem from "../components/CartItem";
+import "./Cart.css";
 import { useEffect, useState } from "react";
 
 function Cart() {
@@ -133,15 +135,14 @@ function Cart() {
   }
 
   return (
-    <div>
+    <div className="cart-container">
       <NavBar />
       <div>
-        <h1>{itemsInCartToString()}</h1>
-        <div>
-          {products.map((product) => {
-            return (
+        <h1 className="cart-header">{itemsInCartToString()}</h1>
+        <div className="cart-items">
+          {products.map((product) => (
+            <div key={product.id} className="cart-item">
               <CartItem
-                key={product.name}
                 name={product.name}
                 image={product.image}
                 price={product.price}
@@ -152,14 +153,15 @@ function Cart() {
                 isAddedToCart={product.isAddedToCart}
                 handleRemoveFromCart={handleRemoveFromCart}
               />
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
-      <div>
+      <div className="cart-actions">
         <button onClick={handleOrder}>Order</button>
-        <p>Total: ${updatedTotal}</p>
+        <p className="cart-total">Total: ${updatedTotal}</p>
       </div>
+      <Footer />
     </div>
   );
 }

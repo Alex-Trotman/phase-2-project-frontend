@@ -1,4 +1,7 @@
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import ReviewComponent from "../components/ReviewComponent";
+import "./Review.css";
 import { useEffect, useState } from "react";
 
 function Review() {
@@ -8,6 +11,35 @@ function Review() {
     product: "",
     rating: "",
     review: "",
+  });
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    getReviews();
+  }, []);
+
+  function getReviews() {
+    const url = `http://localhost:4000/reviews`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Reviews", data);
+        setReviews(data);
+      })
+      .catch((error) => console.error("Error during toggle:", error));
+  }
+
+  const reviewComponents = reviews.map((review) => {
+    return (
+      <ReviewComponent
+        key={review.id}
+        user={review.user}
+        product={review.product}
+        rating={review.rating}
+        review={review.review}
+      />
+    );
   });
 
   function handleChange(e) {
@@ -46,6 +78,7 @@ function Review() {
             rating: "",
             review: "",
           });
+          getReviews();
         })
         .catch((error) => {
           // Log the entire response object
@@ -58,16 +91,16 @@ function Review() {
   }
 
   return (
-    <div>
+    <div className="review-container">
       <NavBar />
       <h1>You're item has been returned, please leave a review</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="review-form" onSubmit={handleSubmit}>
         <label>Select Item:</label>
         <select name="product" value={formData.product} onChange={handleChange}>
           <option>Select product</option>
           <option>Smartphone</option>
           <option>Laptop</option>
-          <option>Headphones</option>
+          <option>Raspberry Pi 4 Computer Model B 8GBs</option>
           <option>Sovol SV01 Pro 3D Printer</option>
           <option>eSUN PLA+ Filament 1.75mm</option>
         </select>
@@ -92,6 +125,8 @@ function Review() {
         <br />
         <button>Submit</button>
       </form>
+      <div className="reviews-wrapper">{reviewComponents}</div>
+      <Footer />
     </div>
   );
 }

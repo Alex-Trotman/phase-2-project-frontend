@@ -1,7 +1,8 @@
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import Product from "../components/Product";
-import "./Home.css"
+import "./Home.css";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,6 @@ function Home() {
       <div className="products-gallery">
         {products.map((product) => {
           return (
-            
             <Product
               key={product.name}
               name={product.name}
@@ -47,6 +47,7 @@ function Home() {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 }

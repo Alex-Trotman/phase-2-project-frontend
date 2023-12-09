@@ -5,18 +5,16 @@
   justify-content: flex-end;
   margin: 10px;
   padding: 20px;
-  width: 100%;
+  width: 30%; /* (100% / 3) */
   max-height: 400px;
   min-width: 100px;
   background-color: white;
   z-index: 1;
-
 }
 
 .product > img {
-  max-height: 200px;
-  width: 100%;
-  object-fit: contain;
+  max-width: 150px; /* Set a consistent width for all images */
+  height: auto;
   margin-bottom: 15px;
 }
 

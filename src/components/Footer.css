@@ -1,0 +1,37 @@
+/* Footer.css */
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #f0f0f0; /* Light grey background */
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.footer-text {
+  margin: 0; /* Remove default margin for the paragraph element */
+}
+
+.footer-links {
+  display: flex;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  color: #00453e; /* Matching the navbar color */
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-icon {
+  margin-right: 5px; /* Adjust this value based on your preference */
+}

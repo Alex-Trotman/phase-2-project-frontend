@@ -1,5 +1,7 @@
 .products-gallery {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap; /* This is the key addition */
 }
