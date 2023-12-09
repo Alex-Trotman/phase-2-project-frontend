@@ -3,10 +3,13 @@ import Footer from "../components/Footer";
 import CartItem from "../components/CartItem";
 import "./Cart.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const [itemsInCart, setItemsInCart] = useState(0);
   const [products, setProducts] = useState([]);
+
+  const navigate = useNavigate();
 
   function getInCartItems() {
     fetch("http://localhost:4000/products")
@@ -64,49 +67,51 @@ function Cart() {
 
   function handleOrder() {
     console.log("INSIDE handleOrder:", products);
-    if (products.length > 0) {
-      const newOrder = {
-        id: "",
-        products: [],
-        total: updatedTotal,
-      };
 
-      products.forEach((product) => {
-        newOrder.products.push({
-          name: product.name,
-          productId: product.id,
-          quantity: "example",
-          price: product.price,
-        });
+    if (products.length === 0) {
+      alert("Cart is empty, please add items to place an order.");
+      return;
+    }
 
-        products.forEach((product) => {
-          const url = `http://localhost:4000/products/${product.id}`;
+    const newOrder = {
+      id: "",
+      products: [],
+      total: updatedTotal,
+    };
 
-          fetch(url)
-            .then((response) => response.json())
-            .then((product) => {
-              return fetch(url, {
-                method: "PATCH",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  purchased: true,
-                  isAddedToCart: false,
-                }),
-              });
-            })
-            .then((response) => response.json())
-            .then((data) => {
-              getInCartItems();
-              getCountOnInCartItems();
-            })
-            .catch((error) => console.error("Error during toggle:", error));
-        });
+    const updatePromises = products.map((product) => {
+      const url = `http://localhost:4000/products/${product.id}`;
+
+      newOrder.products.push({
+        name: product.name,
+        productId: product.id,
+        quantity: "example",
+        price: product.price,
       });
 
-      console.log("newOrder:", newOrder);
-    } else alert("Cart is empty, please add items to place an order.");
+      return fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          purchased: true,
+          isAddedToCart: false,
+        }),
+      })
+        .then((response) => response.json())
+        .catch((error) => console.error("Error during toggle:", error));
+    });
+
+    Promise.all(updatePromises)
+      .then(() => {
+        console.log("newOrder:", newOrder);
+        getInCartItems();
+        getCountOnInCartItems();
+        alert("Order placed"); // Add this line to show the alert
+        navigate("/orders"); // Use navigate to go to the orders page
+      })
+      .catch((error) => console.error("Error during order update:", error));
   }
 
   function handleRemoveFromCart(id) {
@@ -141,7 +146,7 @@ function Cart() {
         <h1 className="cart-header">{itemsInCartToString()}</h1>
         <div className="cart-items">
           {products.map((product) => (
-            <div key={product.id} className="cart-item">
+            <div key={product.id}>
               <CartItem
                 name={product.name}
                 image={product.image}

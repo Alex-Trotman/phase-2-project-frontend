@@ -1,0 +1,81 @@
+/* Add this styling to your existing CSS file or create a new one */
+
+/* Cart.js specific styles */
+
+.cart-container {
+  text-align: center;
+  /* margin-top: 20px; */
+}
+
+.cart-header {
+  color: #00453e;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cart-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  width: 200px; /* (100% / 3) */
+  max-height: 400px;
+  min-height: 350px;
+  min-width: 100px;
+  background-color: white;
+  z-index: 1;
+}
+
+.cart-item-image {
+  width: 150px; /* Set a consistent width for all images */
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* Clear separation between cart items */
+.cart-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.cart-actions {
+  margin-top: 20px;
+}
+
+.cart-actions button {
+  background-color: #00453e;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cart-actions button:hover {
+  background-color: #002829;
+}
+
+.remove-from-cart-button {
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Add any additional styles as needed */

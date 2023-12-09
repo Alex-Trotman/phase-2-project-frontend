@@ -15,9 +15,14 @@ function CartItem({ name, price, image, rating, id, handleRemoveFromCart }) {
           </p>
           <div className="product-rating">Rating: {rating}</div>
         </div>
-        <img src={image} alt={name} />
+        <img src={image} alt={name} className="cart-item-image" />
       </div>
-      <button onClick={() => handleRemoveFromCart(id)}>Remove from cart</button>
+      <button
+        className="remove-from-cart-button"
+        onClick={() => handleRemoveFromCart(id)}
+      >
+        Remove from cart
+      </button>
     </div>
   );
 }
