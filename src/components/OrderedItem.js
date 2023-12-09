@@ -24,7 +24,9 @@ function OrderedItem({ name, price, image, rating, id }) {
         });
       })
       .then((response) => response.json())
-      .then((data) => {})
+      .then((data) => {
+        alert("Item has been returned successfully 🥳");
+      })
       .catch((error) => console.error("Error during toggle:", error));
 
     navigate("/reviews");

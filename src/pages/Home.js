@@ -7,6 +7,7 @@ import "./Home.css";
 function Home() {
   const [products, setProducts] = useState([]);
   const [itemsInCart, setItemsInCart] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:4000/products")
@@ -26,11 +27,16 @@ function Home() {
     }
   }
 
+  // Filter products based on the search query
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
-      <NavBar itemsInCart={itemsInCart} />
+      <NavBar itemsInCart={itemsInCart} setSearchQuery={setSearchQuery} />
       <div className="products-gallery">
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
           return (
             <Product
               key={product.name}

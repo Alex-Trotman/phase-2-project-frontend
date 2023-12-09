@@ -1,6 +1,6 @@
 function ReviewComponent({ user, product, rating, review }) {
   return (
-    <div className="review-component">
+    <div className="review-item">
       <h1>{user}</h1>
       <p>Product: {product}</p>
       <p>{rating}</p>

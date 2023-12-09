@@ -4,4 +4,5 @@
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap; /* This is the key addition */
+  margin-bottom: 100px;
 }

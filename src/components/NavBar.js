@@ -4,13 +4,13 @@ import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 
 /* define the NavBar component */
-function NavBar({ itemsInCart }) {
+function NavBar({ itemsInCart, setSearchQuery }) {
   return (
     <nav className="navbar-wrapper">
       <NavLink to="/" className="nav-link">
         <img className="header-logo" src="./Amazon_logo.svg.webp"></img>
       </NavLink>
-      <SearchBar />
+      <SearchBar setSearchQuery={setSearchQuery} />
       <NavLink to="/reviews" className="nav-link">
         Write a review
       </NavLink>

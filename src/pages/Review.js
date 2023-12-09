@@ -93,9 +93,9 @@ function Review() {
   return (
     <div className="review-container">
       <NavBar />
-      <h1>You're item has been returned, please leave a review</h1>
+      <h1>Write a review</h1>
       <form className="review-form" onSubmit={handleSubmit}>
-        <label>Select Item:</label>
+        <label>Select product:</label>
         <select name="product" value={formData.product} onChange={handleChange}>
           <option>Select product</option>
           <option>Smartphone</option>
@@ -105,7 +105,7 @@ function Review() {
           <option>eSUN PLA+ Filament 1.75mm</option>
         </select>
         <br />
-        <label>Rating:</label>
+        <label>Overall rating</label>
         <select name="rating" value={formData.rating} onChange={handleChange}>
           <option>Choose rating</option>
           <option>⭐⭐⭐⭐⭐</option>
@@ -115,7 +115,7 @@ function Review() {
           <option>⭐</option>
         </select>
         <br />
-        <label>Type a review:</label>
+        <label>Add a written review</label>
         <input
           type="text"
           name="review"
