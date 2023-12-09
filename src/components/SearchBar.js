@@ -13,11 +13,9 @@ function SearchBar({ setSearchQuery, searchQuery }) {
   const handleSearch = (event) => {
     event.preventDefault();
 
-    // Navigate to Home.js before conducting the search
-    navigate("/home");
-
-    // Optionally, you can pass the search query as a URL parameter
-    setSearchQuery(searchQuery);
+    if (searchQuery !== undefined) {
+      setSearchQuery(searchQuery);
+    } else navigate("/");
   };
 
   const handleInputClick = () => {
