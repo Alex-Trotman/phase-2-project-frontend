@@ -98,8 +98,8 @@ function Review() {
         <label>Select product:</label>
         <select name="product" value={formData.product} onChange={handleChange}>
           <option>Select product</option>
-          <option>Smartphone</option>
-          <option>Laptop</option>
+          <option>Google Pixel 7a</option>
+          <option>HP Victus 15 Gaming Laptop</option>
           <option>Raspberry Pi 4 Computer Model B 8GBs</option>
           <option>Sovol SV01 Pro 3D Printer</option>
           <option>eSUN PLA+ Filament 1.75mm</option>

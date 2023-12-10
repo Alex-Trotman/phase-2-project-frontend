@@ -27,14 +27,24 @@ function Home() {
     }
   }
 
+  console.log("SearchQuery", searchQuery);
   // Filter products based on the search query
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredProducts = products.filter((product) => {
+    // Ensure product and product.name are defined before accessing toLowerCase
+    return (
+      product &&
+      product.name &&
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
 
   return (
     <div>
-      <NavBar itemsInCart={itemsInCart} setSearchQuery={setSearchQuery} />
+      <NavBar
+        itemsInCart={itemsInCart}
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
       <div className="products-gallery">
         {filteredProducts.map((product) => {
           return (

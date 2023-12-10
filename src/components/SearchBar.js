@@ -1,10 +1,12 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 
 function SearchBar({ setSearchQuery, searchQuery }) {
   const navigate = useNavigate();
+
+  console.log("INSIDE SearchBar.js", searchQuery);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
