@@ -8,7 +8,7 @@ function NavBar({ itemsInCart, setSearchQuery, searchQuery }) {
   return (
     <nav className="navbar-wrapper">
       <NavLink to="/" className="nav-link">
-        <img className="header-logo" src="./Amazon_logo.svg.webp"></img>
+        <img className="header-logo" src="./Amazon_logo.svg.webp" alt="Amazon logo"></img>
       </NavLink>
       <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       <NavLink to="/reviews" className="nav-link">

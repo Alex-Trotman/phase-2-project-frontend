@@ -1,6 +1,6 @@
 import "./App.css";
 
-function App({ router }) {
+function App() {
   return <div className="App"></div>;
 }
 

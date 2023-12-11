@@ -42,7 +42,7 @@ function OrderedItem({ name, price, image, rating, id }) {
         </p>
         <div className="product-rating">Rating: {rating}</div>
       </div>
-      <img src={image}></img>
+      <img src={image} alt="unavailable"></img>
       <button onClick={handleClick}>Return Item</button>
     </div>
   );
