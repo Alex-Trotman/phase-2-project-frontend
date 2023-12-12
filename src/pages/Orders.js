@@ -29,7 +29,7 @@ function Orders() {
   console.log("Purchased products:", purchasedProducts);
   return (
     <div className="orders-container">
-      <NavBar />
+      {/* <NavBar /> */}
       <h1 className="orders-header">My Orders</h1>
       <ul className="ordered-item-list">
         {purchasedProducts.map((product) => (
@@ -45,7 +45,7 @@ function Orders() {
           />
         ))}
       </ul>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 

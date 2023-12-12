@@ -40,11 +40,7 @@ function Home() {
 
   return (
     <div>
-      <NavBar
-        itemsInCart={itemsInCart}
-        setSearchQuery={setSearchQuery}
-        searchQuery={searchQuery}
-      />
+      {/* <NavBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} /> */}
       <div className="products-gallery">
         {filteredProducts.map((product) => {
           return (
@@ -63,7 +59,7 @@ function Home() {
           );
         })}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

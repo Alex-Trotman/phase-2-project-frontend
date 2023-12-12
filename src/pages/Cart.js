@@ -141,7 +141,7 @@ function Cart() {
 
   return (
     <div className="cart-container">
-      <NavBar />
+      {/* <NavBar /> */}
       <div>
         <h1 className="cart-header">{itemsInCartToString()}</h1>
         <div className="cart-items">
@@ -166,7 +166,7 @@ function Cart() {
         <button onClick={handleOrder}>Order</button>
         <p className="cart-total">Total: ${updatedTotal}</p>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

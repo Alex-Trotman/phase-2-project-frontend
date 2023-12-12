@@ -4,11 +4,15 @@ import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 
 /* define the NavBar component */
-function NavBar({ itemsInCart, setSearchQuery, searchQuery }) {
+function NavBar({ setSearchQuery, searchQuery }) {
   return (
     <nav className="navbar-wrapper">
       <NavLink to="/" className="nav-link">
-        <img className="header-logo" src="./Amazon_logo.svg.webp" alt="Amazon logo"></img>
+        <img
+          className="header-logo"
+          src="./Amazon_logo.svg.webp"
+          alt="Amazon logo"
+        ></img>
       </NavLink>
       <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       <NavLink to="/reviews" className="nav-link">
@@ -19,7 +23,7 @@ function NavBar({ itemsInCart, setSearchQuery, searchQuery }) {
       </NavLink>
 
       <NavLink to="/cart" className="nav-link">
-        <CartIcon itemsInCart={itemsInCart} />
+        <CartIcon />
       </NavLink>
     </nav>
   );

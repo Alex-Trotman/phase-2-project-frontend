@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./CartIcon.css";
 
-function CartIcon({ itemsInCart }) {
+function CartIcon() {
   // const [itemsInCart, setItemsInCart] = useState(0);
 
   // useEffect(() => {
@@ -24,12 +24,11 @@ function CartIcon({ itemsInCart }) {
   //       console.error("Error fetching data:", error);
   //     });
   // }, []);
-  
-// <span className="basket-count">{itemsInCart}</span>
+
+  // <span className="basket-count">{itemsInCart}</span>
   return (
     <div className="cart-wrapper">
       <ShoppingCartIcon />
-      
     </div>
   );
 }

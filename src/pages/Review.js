@@ -92,7 +92,7 @@ function Review() {
 
   return (
     <div className="review-container">
-      <NavBar />
+      {/* <NavBar /> */}
       <h1>Write a review</h1>
       <form className="review-form" onSubmit={handleSubmit}>
         <label>Select product:</label>
@@ -129,7 +129,7 @@ function Review() {
         <button>Submit</button>
       </form>
       <div className="reviews-wrapper">{reviewComponents}</div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
