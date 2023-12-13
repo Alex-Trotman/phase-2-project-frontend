@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -32,9 +32,34 @@ export default function App() {
 }
 
 function Layout() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [products, setProducts] = useState([]);
+  const [itemsInCart, setItemsInCart] = useState(0);
+  // const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(data);
+      });
+  }, []);
+
+  // Filter products based on the search query
+  const filteredProducts = products.filter((product) => {
+    // Ensure product and product.name are defined before accessing toLowerCase
+    return (
+      product &&
+      product.name &&
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
+
   return (
     <div>
-      <NavBar />
+      <NavBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       <Outlet />
       <Footer />
     </div>
