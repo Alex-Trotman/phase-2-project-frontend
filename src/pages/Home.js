@@ -1,10 +1,11 @@
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+// import NavBar from "../components/NavBar";
+// import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import Product from "../components/Product";
 import "./Home.css";
+import { MyConsumer } from "../MyContext";
 
-function Home({ filteredProducts }) {
+function Home() {
   // const [products, setProducts] = useState([]);
   // const [itemsInCart, setItemsInCart] = useState(0);
   // const [searchQuery, setSearchQuery] = useState("");
@@ -28,27 +29,31 @@ function Home({ filteredProducts }) {
   // }
 
   return (
-    <div>
-      {/* <NavBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} /> */}
-      <div className="products-gallery">
-        {filteredProducts.map((product) => {
-          return (
-            <Product
-              key={product.name}
-              name={product.name}
-              image={product.image}
-              price={product.price}
-              description={product.description}
-              prime={product.prime}
-              rating={product.rating}
-              id={product.id}
-              isAddedToCart={product.isAddedToCart}
-            />
-          );
-        })}
+    <MyConsumer>
+      {data => 
+        <div>
+          <div className="products-gallery">
+            {data.filteredProducts.map((product) => {
+              return (
+                <Product
+                  key={product.name}
+                  name={product.name}
+                  image={product.image}
+                  price={product.price}
+                  description={product.description}
+                  prime={product.prime}
+                  rating={product.rating}
+                  id={product.id}
+                  isAddedToCart={product.isAddedToCart}
+                />
+              );
+            })}
+          </div>
       </div>
-      {/* <Footer /> */}
-    </div>
+      
+      }
+    </MyConsumer>
+    
   );
 }
 

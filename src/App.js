@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route, Outlet} from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -10,7 +10,7 @@ import Cart from "./pages/Cart";
 import ErrorPage from "./pages/ErrorPage";
 
 export default function App() {
-  const [cartCount, setCartCount] = useState(0);
+
 
   return (
     <div className="App">
@@ -32,34 +32,32 @@ export default function App() {
 }
 
 function Layout() {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const [products, setProducts] = useState([]);
-  const [itemsInCart, setItemsInCart] = useState(0);
   // const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:4000/products")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProducts(data);
-      });
-  }, []);
+  // const [products, setProducts] = useState([]);
+  // const [itemsInCart, setItemsInCart] = useState(0);
+  // // const [searchQuery, setSearchQuery] = useState("");
 
-  // Filter products based on the search query
-  const filteredProducts = products.filter((product) => {
-    // Ensure product and product.name are defined before accessing toLowerCase
-    return (
-      product &&
-      product.name &&
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  });
+  // useEffect(() => {
+  //   fetch("http://localhost:4000/products")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setProducts(data);
+  //     });
+  // }, []);
+
+  // const filteredProducts = products.filter((product) => {
+  //   return (
+  //     product &&
+  //     product.name &&
+  //     product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  //   );
+  // });
 
   return (
     <div>
-      <NavBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+      <NavBar/>
       <Outlet />
       <Footer />
     </div>
