@@ -20,10 +20,6 @@ export default function App() {
           <Route path="reviews" element={<Review />} />
           <Route path="orders" element={<Orders />} />
           <Route path="cart" element={<Cart />} />
-
-          {/* Using path="*"" means "match anything", so this route
-                acts like a catch-all for URLs that we don't have explicit
-                routes for. */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
@@ -32,29 +28,6 @@ export default function App() {
 }
 
 function Layout() {
-  // const [searchQuery, setSearchQuery] = useState("");
-
-  // const [products, setProducts] = useState([]);
-  // const [itemsInCart, setItemsInCart] = useState(0);
-  // // const [searchQuery, setSearchQuery] = useState("");
-
-  // useEffect(() => {
-  //   fetch("http://localhost:4000/products")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setProducts(data);
-  //     });
-  // }, []);
-
-  // const filteredProducts = products.filter((product) => {
-  //   return (
-  //     product &&
-  //     product.name &&
-  //     product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  //   );
-  // });
-
   return (
     <div>
       <NavBar/>
