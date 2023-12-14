@@ -30,7 +30,7 @@ function Home() {
 
   return (
     <MyConsumer>
-      {data => 
+      {(data) => (
         <div>
           <div className="products-gallery">
             {data.filteredProducts.map((product) => {
@@ -45,15 +45,15 @@ function Home() {
                   rating={product.rating}
                   id={product.id}
                   isAddedToCart={product.isAddedToCart}
+                  cartCount={data.cartCount}
+                  setCartCount={data.setCartCount}
                 />
               );
             })}
           </div>
-      </div>
-      
-      }
+        </div>
+      )}
     </MyConsumer>
-    
   );
 }
 

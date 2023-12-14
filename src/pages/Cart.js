@@ -4,6 +4,7 @@ import CartItem from "../components/CartItem";
 import "./Cart.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MyConsumer } from "../MyContext";
 
 function Cart() {
   const [itemsInCart, setItemsInCart] = useState(0);
@@ -140,34 +141,46 @@ function Cart() {
   }
 
   return (
-    <div className="cart-container">
-      {/* <NavBar /> */}
-      <div>
-        <h1 className="cart-header">{itemsInCartToString()}</h1>
-        <div className="cart-items">
-          {products.map((product) => (
-            <div key={product.id}>
-              <CartItem
-                name={product.name}
-                image={product.image}
-                price={product.price}
-                description={product.description}
-                prime={product.prime}
-                rating={product.rating}
-                id={product.id}
-                isAddedToCart={product.isAddedToCart}
-                handleRemoveFromCart={handleRemoveFromCart}
-              />
+    <MyConsumer>
+      {(data) => (
+        <div className="cart-container">
+          <div>
+            <h1 className="cart-header">{itemsInCartToString()}</h1>
+            <div className="cart-items">
+              {products.map((product) => (
+                <div key={product.id}>
+                  <CartItem
+                    name={product.name}
+                    image={product.image}
+                    price={product.price}
+                    description={product.description}
+                    prime={product.prime}
+                    rating={product.rating}
+                    id={product.id}
+                    isAddedToCart={product.isAddedToCart}
+                    handleRemoveFromCart={handleRemoveFromCart}
+                    setCartCount={data.setCartCount}
+                    cartCount={data.cartCount}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="cart-actions">
+            <button
+              onClick={() => {
+                handleOrder();
+                data.setCartCount(0);
+              }}
+            >
+              Order
+            </button>
+            <p className="cart-total">Total: ${updatedTotal}</p>
+          </div>
+          {/* <Footer /> */}
         </div>
-      </div>
-      <div className="cart-actions">
-        <button onClick={handleOrder}>Order</button>
-        <p className="cart-total">Total: ${updatedTotal}</p>
-      </div>
-      {/* <Footer /> */}
-    </div>
+      )}
+    </MyConsumer>
   );
 }
 

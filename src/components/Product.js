@@ -10,7 +10,8 @@ function Product({
   prime,
   image,
   rating,
-  updateCart,
+  cartCount,
+  setCartCount,
 }) {
   const [buttonValue, setButtonValue] = useState("Add to cart");
 
@@ -57,8 +58,9 @@ function Product({
             ? "Add to cart"
             : "Remove from cart"
         );
-
-        // updateCart(buttonValue);
+        setCartCount(
+          buttonValue === "Remove from cart" ? cartCount - 1 : cartCount + 1
+        );
       })
       .catch((error) => console.error("Error during toggle:", error));
   }

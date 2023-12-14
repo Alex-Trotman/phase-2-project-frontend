@@ -4,17 +4,15 @@ import "./CartIcon.css";
 import { MyConsumer } from "../MyContext";
 
 function CartIcon() {
-
   return (
     <MyConsumer>
-      {data =>
+      {(data) => (
         <div className="cart-wrapper">
           <ShoppingCartIcon />
           {data.cartCount}
         </div>
-      }
+      )}
     </MyConsumer>
-    
   );
 }
 

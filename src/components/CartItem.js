@@ -3,7 +3,16 @@
 import React from "react";
 import "./CartItem.css";
 
-function CartItem({ name, price, image, rating, id, handleRemoveFromCart }) {
+function CartItem({
+  name,
+  price,
+  image,
+  rating,
+  id,
+  handleRemoveFromCart,
+  setCartCount,
+  cartCount,
+}) {
   return (
     <div className="cart-item">
       <div className="product-container">
@@ -19,7 +28,10 @@ function CartItem({ name, price, image, rating, id, handleRemoveFromCart }) {
       </div>
       <button
         className="remove-from-cart-button"
-        onClick={() => handleRemoveFromCart(id)}
+        onClick={() => {
+          handleRemoveFromCart(id);
+          setCartCount(cartCount - 1);
+        }}
       >
         Remove from cart
       </button>
