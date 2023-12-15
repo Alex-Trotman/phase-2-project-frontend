@@ -10,10 +10,8 @@ import {
 import routes from "./routes.js";
 import App from "./App.js";
 import { MyProvider } from "./MyContext.js";
-// const router = createBrowserRouter(routes);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<RouterProvider router={router} />);
 
 root.render(
   <React.StrictMode>
@@ -24,4 +22,6 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+
 reportWebVitals();
