@@ -74,9 +74,6 @@ const MyConsumer = MyContext.Consumer;
 
 export { MyProvider, MyConsumer };
 
-
-
-
 // import React, { useState } from 'react';
 
 // const MyContext = React.createContext();
@@ -111,7 +108,7 @@ export { MyProvider, MyConsumer };
 //   }
 
 //   return (
-//     <MyContext.Provider 
+//     <MyContext.Provider
 //     value={
 //       {
 //       cartCount: cartCount
