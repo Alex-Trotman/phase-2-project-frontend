@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./CartIcon.css";
 import { MyConsumer } from "../MyContext";
