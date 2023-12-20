@@ -1,9 +1,9 @@
-import { NavLink } from "react-router-dom";
 import "./NavBar.css";
+import { NavLink } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 import { MyConsumer } from "../MyContext";
-/* define the NavBar component */
+
 function NavBar() {
   return (
     <MyConsumer>
