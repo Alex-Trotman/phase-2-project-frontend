@@ -7,7 +7,7 @@ import { MyConsumer } from "../MyContext";
 function NavBar() {
   return (
     <MyConsumer>
-      {data =>
+      {(data) => (
         <nav className="navbar-wrapper">
           <NavLink to="/" className="nav-link">
             <img
@@ -16,7 +16,10 @@ function NavBar() {
               alt="Amazon logo"
             ></img>
           </NavLink>
-          <SearchBar searchQuery={data.searchQuery} setSearchQuery={data.setSearchQuery}/>
+          <SearchBar
+            searchQuery={data.searchQuery}
+            setSearchQuery={data.setSearchQuery}
+          />
           <NavLink to="/reviews" className="nav-link">
             Write a review
           </NavLink>
@@ -28,9 +31,8 @@ function NavBar() {
             <CartIcon />
           </NavLink>
         </nav>
-      }
+      )}
     </MyConsumer>
-    
   );
 }
 
