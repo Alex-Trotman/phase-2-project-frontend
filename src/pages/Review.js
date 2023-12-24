@@ -78,7 +78,8 @@ function Review() {
             rating: "",
             review: "",
           });
-          getReviews();
+          // getReviews();
+          setReviews([...reviews, data]);
         })
         .catch((error) => {
           // Log the entire response object
