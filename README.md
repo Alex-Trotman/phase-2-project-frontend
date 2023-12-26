@@ -42,3 +42,4 @@ npm start
 
 # Usage
 
+![image](https://github.com/Alex-Trotman/phase-2-project-frontend/assets/132168324/6b97d53f-6b7f-4ec4-a786-3e247528e96b)
