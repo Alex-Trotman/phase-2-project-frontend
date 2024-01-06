@@ -5,6 +5,8 @@ import "./Orders.css";
 import React, { useState, useEffect } from "react";
 function Orders() {
   const [items, setItems] = useState([]);
+  const [count, setCount] = useState(0);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:4000/products")
@@ -26,10 +28,19 @@ function Orders() {
 
   const purchasedProducts = items.filter((item) => item.purchased === true);
 
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCount((count) => inputValue.length + count);
+    setInputValue("");
+  };
+
   console.log("Purchased products:", purchasedProducts);
   return (
     <div className="orders-container">
-      {/* <NavBar /> */}
       <h1 className="orders-header">My Orders</h1>
       <ul className="ordered-item-list">
         {purchasedProducts.map((product) => (
